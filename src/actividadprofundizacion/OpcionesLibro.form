@@ -56,9 +56,9 @@
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="Btn1" min="-2" pref="135" max="-2" attributes="0"/>
+                          <Component id="BtnEliminar" min="-2" pref="135" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="296" max="-2" attributes="0"/>
-                          <Component id="Btn" min="-2" pref="135" max="-2" attributes="0"/>
+                          <Component id="BtnActualizar" min="-2" pref="135" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
@@ -101,8 +101,8 @@
                   <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
                   <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="Btn" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="Btn1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="BtnActualizar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="BtnEliminar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="31" max="32767" attributes="0"/>
               </Group>
@@ -183,7 +183,7 @@
             <Property name="text" type="java.lang.String" value="N&#xb0; P&#xe1;ginas"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="Btn">
+        <Component class="javax.swing.JButton" name="BtnActualizar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="21" green="6e" red="ef" type="rgb"/>
@@ -197,10 +197,10 @@
             <Property name="text" type="java.lang.String" value="Actualizar"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="BtnMouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="BtnActualizarMouseClicked"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="Btn1">
+        <Component class="javax.swing.JButton" name="BtnEliminar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="21" green="6e" red="ef" type="rgb"/>
@@ -214,7 +214,7 @@
             <Property name="text" type="java.lang.String" value="Eliminar"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Btn1MouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="BtnEliminarMouseClicked"/>
           </Events>
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator1">

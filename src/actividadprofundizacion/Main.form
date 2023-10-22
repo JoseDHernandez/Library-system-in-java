@@ -64,15 +64,15 @@
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="Msg" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="Actualizar" min="-2" pref="166" max="-2" attributes="0"/>
+                          <Component id="BtnActualizar" min="-2" pref="166" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                          <Component id="Btn" min="-2" pref="135" max="-2" attributes="0"/>
+                          <Component id="BtnSeleccionar" min="-2" pref="135" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jScrollPane1" alignment="0" pref="986" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
-                          <Component id="Registrar" min="-2" pref="166" max="-2" attributes="0"/>
+                          <Component id="BtnRegistrar" min="-2" pref="166" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                          <Component id="LimpiarCampos" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
@@ -131,19 +131,19 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="Registrar" min="-2" max="-2" attributes="0"/>
+                          <Component id="BtnRegistrar" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="Msg" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="Actualizar" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="Btn" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="BtnActualizar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="BtnSeleccionar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
-                          <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                          <Component id="LimpiarCampos" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -279,7 +279,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="Buscador">
         </Component>
-        <Component class="javax.swing.JButton" name="Btn">
+        <Component class="javax.swing.JButton" name="BtnSeleccionar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="21" green="6e" red="ef" type="rgb"/>
@@ -293,7 +293,7 @@
             <Property name="text" type="java.lang.String" value="Seleccionar"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="BtnMouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="BtnSeleccionarMouseClicked"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="BtnBuscar">
@@ -325,7 +325,7 @@
             <Property name="text" type="java.lang.String" value="Jos&#xe9; David Hern&#xe1;ndez Hort&#xfa;a"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="Actualizar">
+        <Component class="javax.swing.JButton" name="BtnActualizar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="21" green="6e" red="ef" type="rgb"/>
@@ -339,10 +339,10 @@
             <Property name="text" type="java.lang.String" value="Actualizar lista"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ActualizarMouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="BtnActualizarMouseClicked"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="Registrar">
+        <Component class="javax.swing.JButton" name="BtnRegistrar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="21" green="6e" red="ef" type="rgb"/>
@@ -356,7 +356,7 @@
             <Property name="text" type="java.lang.String" value="Registrar libro"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="RegistrarMouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="BtnRegistrarMouseClicked"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="BtnOrden">
@@ -429,12 +429,12 @@
             <Property name="text" type="java.lang.String" value="Cambiar orden a:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="LimpiarCampos">
           <Properties>
             <Property name="text" type="java.lang.String" value="Limpiar campos"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton1MouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="LimpiarCamposMouseClicked"/>
           </Events>
         </Component>
       </SubComponents>

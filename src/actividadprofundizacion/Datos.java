@@ -1,28 +1,23 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
+
 package actividadprofundizacion;
 
-/**
- *
- * @author user
- */
 public class Datos {
-
-    private static Datos instance;
-    private ListaDoble Libros = new ListaDoble();
-    private Lista Materias = new Lista();
-    private Lista Inicial = new Lista();
+    //Atributos
+    private static Datos instance; //Instancia de la propia clase
+    private ListaDoble Libros = new ListaDoble(); //Lista de libros
+    private Lista Materias = new Lista(); // Lista de mateiras
+    private Lista Inicial = new Lista(); //Lista de iniciales de las materias
+    //Constructor 
     private Datos() {
     }
-
+    //Obtener instancia de la clase
     public static Datos getInstance() {
         if (instance == null) {
             instance = new Datos();
         }
         return instance;
     }
+    //setters 
     public void agregarMateria(String materia){
         Materias.agregar(materia);
     }
@@ -38,12 +33,15 @@ public class Datos {
     public void agregarLibro(Libro libro){
         Libros.agregar(libro);
     }
+    //Eliminar libro
     public void eliminarLibro(int index){
         Libros.eliminar(index);
     }
+    //Editar libro
     public void editarLibro(int index,Libro libro){
         Libros.editar(index, libro);
     }
+    //Obtener lista de libros
     public ListaDoble getLibros(){
         return Libros;
     }

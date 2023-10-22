@@ -2,9 +2,8 @@
 package actividadprofundizacion;
 
 public class Lista {
-    
-    private Nodo cabeza;
-    private int size;
+    private Nodo cabeza; //Nodo
+    private int size; //Longitud de la lista
     public Lista() {
         cabeza = null;
         size = 0;

@@ -2,8 +2,8 @@
 package actividadprofundizacion;
 
 public class Nodo {
-    Object valor;
-    Nodo siguiente;
+    Object valor; //Contenido del nodo
+    Nodo siguiente;// Puntero 
     public Nodo(Object valor){
         this.valor=valor;
         this.siguiente=null;

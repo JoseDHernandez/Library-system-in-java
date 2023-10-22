@@ -1,19 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package actividadprofundizacion;
 
-/**
- *
- * @author user
- */
 public class Libro {
+    //Atributos
     private String nombre;
     private String codigo;
     private String autor;
     private String materia;
     private int numeroPaginas;
+    //Contructores
     public Libro(){
         nombre="";
         codigo="";
@@ -28,6 +23,7 @@ public class Libro {
         this.materia = materia;
         this.numeroPaginas = numeroPaginas;
     }
+    //setters
     public void setNombre(String nombre){
         this.nombre= nombre;
     }
@@ -43,6 +39,7 @@ public class Libro {
     public void setNumperoPaginas(int numeroPaginas){
         this.numeroPaginas = numeroPaginas;
     }
+    //getters
     public String getNombre(){
         return nombre;
     }

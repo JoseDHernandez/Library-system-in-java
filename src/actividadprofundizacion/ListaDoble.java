@@ -1,19 +1,21 @@
 package actividadprofundizacion;
 
 public class ListaDoble {
+    //Nodos
     private NodoLibros cabeza;
     private NodoLibros cola;
-    private int size;
-
+    private int size; //Tamaño de la lista
+    //Constructor
     public ListaDoble() {
         cabeza = null;
         cola = null;
         size = 0;
     }
-    
+    //Obtener tamaño
     public int getSize(){
         return size;
     }
+    //Agregar Libro a la lista
     public void agregar(Libro libro) {
         NodoLibros nuevo = new NodoLibros(libro);
 
@@ -28,6 +30,7 @@ public class ListaDoble {
 
         size++;
     }
+    //Obtener libros en un arreglo de objectos
     public Object[][] getLibros(){
         Object[][] libros = new Object[size][5];
         NodoLibros temp = cabeza;
@@ -44,20 +47,21 @@ public class ListaDoble {
         }
         return libros;
     }
-    
+    //Editar libro 
     public void editar(int index, Libro libro) {
         if (index < 0 || index >= size) {
             System.out.println("Índice fuera de rango.");
             return;
         }
-
+        //Obtener libro por el indice
         NodoLibros temporal = cabeza;
         for (int i = 0; i < index; i++) {
             temporal = temporal.getSiguiente();
         }
-
+        //Cambiar valores
         temporal.editar(libro);
     }
+    //Buscar indice segun el codigo 
     public int buscarCodigo(String code){
         NodoLibros temporal = cabeza;
         for (int i = 0; i < size; i++) {
@@ -67,6 +71,7 @@ public class ListaDoble {
         }
         return -1;
     }
+    //Obtener libro por inidice
     public Libro obtenerLibro(int index){
         NodoLibros temporal = cabeza;
         for (int i = 0; i < index; i++) {
@@ -74,6 +79,7 @@ public class ListaDoble {
         }
         return temporal.getLibro();
     }
+    //Eliminar libro (Cambia los punteros al siguiente y anterior del que sedea borrar)
     public void eliminar(int index) {
         if (index < 0 || index >= size) {
             System.out.println("Índice fuera de rango.");
