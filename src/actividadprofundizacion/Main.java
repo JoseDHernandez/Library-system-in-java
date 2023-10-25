@@ -1,4 +1,3 @@
-
 package actividadprofundizacion;
 
 import java.text.Normalizer;
@@ -19,7 +18,6 @@ public class Main extends javax.swing.JFrame {
         orden = false;
     }
 
-   
     @SuppressWarnings("unchecked")
     //Datos de prueba
     private void initData() {
@@ -348,7 +346,9 @@ public class Main extends javax.swing.JFrame {
     //Menu desplegable de ordenar
     private void FiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FiltroActionPerformed
 
-        if(libros==null)return;
+        if (libros == null) {
+            return;
+        }
         orden(false);
         Msg.setText("Selecciona un libro en la tabla.");
         switch (Filtro.getSelectedIndex()) {
@@ -378,13 +378,13 @@ public class Main extends javax.swing.JFrame {
                 break;
         }
     }//GEN-LAST:event_FiltroActionPerformed
-   /*
+    /*
     Ordenamiento por seleccion
         1. Busca el menor numero
         2. Cambia la posicion del numero
         3. "acorta" el arreglo princial
         4. repite
-    */
+     */
     private void seleccion() {
         Object actual[] = new Object[5];
         Object temp[] = new Object[5];
@@ -420,11 +420,12 @@ public class Main extends javax.swing.JFrame {
         }
         drawTable();
     }
+
     /*
     Ordenamiento por insercion
         1. Seleciona un numero como referente
         2. se compara con los demas numeros en busca de su posicion
-    */
+     */
     private void insercion(int categoria) {
         Object[] temp_libro = new Object[5];
         int Inx_principal, Inx_secundario;
@@ -455,10 +456,11 @@ public class Main extends javax.swing.JFrame {
         }
         drawTable();
     }
+
     /*
     Ordenamiento burbuja
         Compara un numero con el siguiente
-    */
+     */
     private void burbuja(int categoria) {
         for (int i = libros.length - 1; i > 0; i--) {
 
@@ -503,15 +505,18 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_BuscarTipoActionPerformed
     //Quitar acentos de los textos
-     public static String cleanString(String texto) {
+    public static String cleanString(String texto) {
         texto = Normalizer.normalize(texto, Normalizer.Form.NFD);
         texto = texto.replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");
         return texto;
     }
+
     //Funcion de buscar
     private void BtnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnBuscarMouseClicked
         // TODO add your handling code here:
-        if(libros == null)return;
+        if (libros == null) {
+            return;
+        }
         //Obtner texto a buscar y tipo de busqueda
         String texto = (String.valueOf(Buscador.getText()).length() >= 2) ? String.valueOf(Buscador.getText()) : "";
         texto = cleanString(texto);
@@ -522,38 +527,40 @@ public class Main extends javax.swing.JFrame {
             tipo--;
             //Seleccionar el tipo de busqueda
             if (Metodo.getSelectedIndex() == 0) {
-                    //Lineal
-                    Object[][] arr =busquedaLineal(texto, tipo);
-                    if (arr.length==0 ) {
-                        avisoError(String.valueOf(BuscarTipo.getSelectedItem()), String.valueOf(Metodo.getSelectedItem()), texto);
-                    }else{
-                        libros=new Object[arr.length][5];
-                        libros=arr;
-                        drawTable();
-                    }
+                //Lineal
+                Object[][] arr = busquedaLineal(texto, tipo);
+                if (arr.length == 0) {
+                    avisoError(String.valueOf(BuscarTipo.getSelectedItem()), String.valueOf(Metodo.getSelectedItem()), texto);
                 } else {
-                    //Binaria
-                    if (busquedaBinaria(texto.toLowerCase(), tipo)) {
-                        avisoError(String.valueOf(BuscarTipo.getSelectedItem()), String.valueOf(Metodo.getSelectedItem()), texto);
-                    }
+                    libros = new Object[arr.length][5];
+                    libros = arr;
+                    drawTable();
                 }
+            } else {
+                //Binaria
+                if (busquedaBinaria(texto.toLowerCase(), tipo)) {
+                    avisoError(String.valueOf(BuscarTipo.getSelectedItem()), String.valueOf(Metodo.getSelectedItem()), texto);
+                }
+            }
         } else if (texto.length() < 3) {
             JOptionPane.showMessageDialog(rootPane, "Ingresa el texto que quieres buscar", "Texto no ingresado", JOptionPane.ERROR_MESSAGE);
         } else if (tipo < 1) {
             JOptionPane.showMessageDialog(rootPane, "Selecciona la categoría en la que quieres buscar: \"" + texto + "\"", "Categoría no seleccionada", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_BtnBuscarMouseClicked
-   //Aviso de error en busqueda
+    //Aviso de error en busqueda
+
     private void avisoError(String cat, String met, String texto) {
         JOptionPane.showMessageDialog(rootPane, "Libro no encontrado con los siguientes parametros\nTexto: \""
                 + texto + "\"\nCategoría: " + cat + "\nMétodo: " + met,
                 "Libro no encontrado", JOptionPane.ERROR_MESSAGE);
     }
+
     /*
     Busqueda lineal
         1. Recorre todo el arreglo guardando en una variable temporal las concidencias
-    */
-    public Object[][] busquedaLineal(String texto, int tipo) {
+     */
+    private Object[][] busquedaLineal(String texto, int tipo) {
         getLibros();
         Object temp[][] = new Object[libros.length][5];
         int cont = 0;
@@ -584,6 +591,7 @@ public class Main extends javax.swing.JFrame {
         }
         return arr;
     }
+
     //Ordenamiento por seleccion con StringToNumber()
     private Object[][] seleccionNumerica(int cat) {
         Object actual[] = new Object[6];
@@ -631,12 +639,13 @@ public class Main extends javax.swing.JFrame {
 
         return local;
     }
+
     /*
     Busqueda binaria
         1. Parte el arreglo a la mitad y elije si usa el lado derecho o izquierdo
         2. Busca la referencia
         3. repite
-    */
+     */
     private boolean busquedaBinaria(String text, int tipo) {
         //Obtener arreglo con texto a numero
         Object local[][] = seleccionNumerica(tipo);
@@ -706,7 +715,7 @@ public class Main extends javax.swing.JFrame {
         int opcion = Table.getSelectedRow(); //Obtener indice del objecto en la tabla
         if (Libros.isNull()) {
             JOptionPane.showMessageDialog(rootPane, "No hay libros registrados, por favor registra un libro.", "No hay libros", JOptionPane.ERROR_MESSAGE);
-        } else if (opcion != -1 || Table.getRowCount() >0) {
+        } else if (opcion != -1 || Table.getRowCount() > 0) {
             //Codigo libro a int
             try {
                 String code = String.valueOf(Table.getValueAt(opcion, 0));
@@ -725,6 +734,7 @@ public class Main extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Selecciona un libro en la tabla", "Libro no seleccionado", JOptionPane.ERROR_MESSAGE);
         }
     }
+
     //Obtener libros para registrarlos en las lista libros y mostrarlos en la tabla
     private void getLibros() {
         Libros = Datos.getInstance().getLibros();
@@ -735,6 +745,7 @@ public class Main extends javax.swing.JFrame {
             drawTable();
         }
     }
+
     //Mostrar libros en la tabla
     private void drawTable() {
         DefaultTableModel tableModel = (DefaultTableModel) Table.getModel();
@@ -746,8 +757,9 @@ public class Main extends javax.swing.JFrame {
             }
         }
     }
+
     //Pasar texto a numeros
-    public long stringToNumber(String texto) {
+    private long stringToNumber(String texto) {
         long numero = 0;
         //Recorrer cada caracter el texto
         for (int i = 0; i < texto.length(); i++) {
@@ -760,7 +772,7 @@ public class Main extends javax.swing.JFrame {
             Ejemplo:
                 8 = 80
                 5 = 85
-            */
+             */
         }
         return numero;
     }

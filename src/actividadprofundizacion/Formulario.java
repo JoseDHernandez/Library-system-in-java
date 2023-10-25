@@ -17,6 +17,7 @@ public class Formulario extends javax.swing.JFrame {
         visibleAddMateria(false);// Ocultar input y boton de agregar materia
         materias();// Cargar materias registradas
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -204,6 +205,9 @@ public class Formulario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnMouseClicked
+        Registrar();
+    }//GEN-LAST:event_BtnMouseClicked
+    private void Registrar() {
         //Obtener texto de los inputs nombres, autor y materia
         String nombre = Nombre.getText().toString();
         String autor = Autor.getText().toString();
@@ -214,30 +218,31 @@ public class Formulario extends javax.swing.JFrame {
             //Numero de  paginas
             int numeroPaginas = (Paginas.getText().toString().isEmpty()) ? 0 : Integer.parseInt(Paginas.getText());
             //Codigo automatico (Cuando se crea una nueva categoria)
-            if(Auto.isSelected() && codigoN==0){
-                codigoN= codigoN+1;
+            if (Auto.isSelected() && codigoN == 0) {
+                codigoN = codigoN + 1;
             }
             //Codigo def (Letra + numero)
             String codigo = inicialSelect + codigoN;
             //Validar longitud nombre, numero codigo, autor y num paginas
-            if (nombre.length() < 2 || codigoN < 0 || autor.length() < 2 || numeroPaginas < 1) 
+            if (nombre.length() < 2 || codigoN < 0 || autor.length() < 2 || numeroPaginas < 1) {
                 JOptionPane.showMessageDialog(rootPane, "Datos no ingresados o invalidos", "Error en los datos", JOptionPane.ERROR_MESSAGE);
+            }
             //Validar si la materia seleccionada es diferente a Seleccionar (placeholder) y Agregar, tambien si numero de paginas es mayor a 0
             if (Materia.getSelectedIndex() > 1 && numeroPaginas > 0) {
                 //Obtener codigo de libro (edicion)
-                int code = Datos.getInstance().getLibros().buscarCodigo((editar)?libro.getCodigo():codigo);
+                int code = Datos.getInstance().getLibros().buscarCodigo((editar) ? libro.getCodigo() : codigo);
                 /*
                     Editar libro
-                */
+                 */
                 if (editar == true) {
                     Libro l = Datos.getInstance().getLibros().obtenerLibro(code);
                     //Cambiar Codigo cuando se cambia de materia
                     String codigoL = l.getCodigo();
-                    if(materia != l.getMateria()){
-                        cambiar=true;
+                    if (materia != l.getMateria()) {
+                        cambiar = true;
                         Auto.setSelected(true);
                         AutoCode();
-                        codigoL = inicialSelect+Codigo.getText();
+                        codigoL = inicialSelect + Codigo.getText();
                     }
                     //Actualizar datos del libro 
                     Libro act = Datos.getInstance().getLibros().obtenerLibro(code);
@@ -250,10 +255,11 @@ public class Formulario extends javax.swing.JFrame {
                     clear();
                 } else {
                     //Validar la previa existencia del objecto libro, para evidar duplicados en los codigos
-                    if (code == -1) { 
+                    if (code == -1) {
                         /*
                             Registrar nuevo libro
-                        */
+                         */
+                        System.out.println("Nuevo codigo " + codigo);
                         Datos.getInstance().agregarLibro(new Libro(codigo, nombre, autor, materia, numeroPaginas));
                         JOptionPane.showMessageDialog(rootPane, "Libro registrado", "Libro registrado", JOptionPane.INFORMATION_MESSAGE);
                         clear();
@@ -280,23 +286,27 @@ public class Formulario extends javax.swing.JFrame {
             Paginas.setText("");
             JOptionPane.showMessageDialog(rootPane, "Número de paginas o código invalido,\ningrese un valor númerico. \nEl código agerga automaticamente la sigla de la categoria", "Error en los datos", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_BtnMouseClicked
-   //Funcion de limpiar inputs
+    }
+
+//Funcion de limpiar inputs
     private void clear() {
         Nombre.setText("");
-        if (!Auto.isSelected()) 
+        if (!Auto.isSelected()) {
             Codigo.setText("");
+        }
         Autor.setText("");
         inicialSelect = "";
         Inicial.setText("");
         Paginas.setText("");
         Materia.setSelectedIndex(0);
     }
+
     //Activar visualizacion de boton e input de agregar materia
     private void visibleAddMateria(boolean t) {
         AddMateria.setVisible(t);
         BtnMateria.setVisible(t);
     }
+
     //Lista seleccionable de materias (evento)
     private void MateriaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_MateriaItemStateChanged
         //Hablitar o deshabilitar agregar materia
@@ -331,6 +341,7 @@ public class Formulario extends javax.swing.JFrame {
             listaMaterias();
         }
     }
+
     //Agregar las materias como opciones en el seleccionable
     private void listaMaterias() {
         Materia.removeAllItems();
@@ -340,6 +351,7 @@ public class Formulario extends javax.swing.JFrame {
             Materia.addItem(mate1);
         }
     }
+
     //Obtener iniciales y guardarlas en el atributo iniciales
     private void inicialesL() {
         Lista Iniciales = Datos.getInstance().getIniciales();
@@ -353,15 +365,21 @@ public class Formulario extends javax.swing.JFrame {
             this.iniciales = inicial;
         }
     }
+
     //Registrar materia e inicial
     private void BtnMateriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnMateriaMouseClicked
+        registrarMateria();
 
+    }//GEN-LAST:event_BtnMateriaMouseClicked
+
+    //Registrar materia e inicial
+    private void registrarMateria() {
         //Obtener iniciales
         inicialesL();
         //Validar si en Materia (Lista seleccionable) esta seleccionado "Agregar" 
         if (Materia.getSelectedIndex() == 1) {
             //Obtener texto de AddMateria
-            String materia = AddMateria.getText().toString();
+            String materia = AddMateria.getText();
             //Validar logitud  de la materia ingresada
             if (materia.length() > 0) {
                 //Regitrar materia en Datos
@@ -400,8 +418,8 @@ public class Formulario extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "Materia no ingresada", "Error en los datos", JOptionPane.ERROR_MESSAGE);
             }
         }
-    }//GEN-LAST:event_BtnMateriaMouseClicked
-    //Radio button de "Automatico"
+    }
+//Radio button de "Automatico"
     private void AutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AutoMouseClicked
         // TODO add your handling code here:
         AutoCode();
@@ -409,7 +427,7 @@ public class Formulario extends javax.swing.JFrame {
     //Funcion de generar automaticamente el codigo (Inicial + numero)
     private void AutoCode() {
         //Desabilitar si esta en edicion y no se cambio de materia
-        if (editar && cambiar==false) {
+        if (editar && cambiar == false) {
             Auto.disable();
             return;
         }
@@ -423,7 +441,7 @@ public class Formulario extends javax.swing.JFrame {
                     2. Ordenar de mayor a menor
                     3. Sumar 1 al ultimo numero
                     4. Guardar en valiables
-                */
+                 */
                 Object libros[][] = Datos.getInstance().getLibros().getLibros();
                 Object temp[][] = new Object[libros.length][5];
                 int cont = 0;
@@ -463,28 +481,38 @@ public class Formulario extends javax.swing.JFrame {
                             }
                         }
                     }
+                    System.out.println("Ultimo: " + arr[0][0]);
                     //Sumar 1 al ultimo numero
                     int num = Integer.parseInt(numCode(String.valueOf(arr[0][0])));
                     //Mostrar en la interfaz
                     Codigo.setText("");
                     if (num == 0) {
-                        System.out.println("Hola");
                         Codigo.setText("1");
                     } else {
                         Codigo.setText(String.valueOf(num + 1));
                     }
                 }
             } else {
+                Codigo.enable();
                 Auto.setSelected(false);
-               JOptionPane.showMessageDialog(rootPane, "No hay un libro registrado anteriormente\n con la materia :" + Materia.getSelectedItem() + ", regitra uno.", "Codigo automatico error", JOptionPane.INFORMATION_MESSAGE);
+                if (Materia.getSelectedIndex() > 1) {
+                    JOptionPane.showMessageDialog(rootPane, "No hay un libro registrado anteriormente\n con la materia :" + Materia.getSelectedItem() + ", regitra uno.", "Codigo automatico error", JOptionPane.INFORMATION_MESSAGE);
+                }
             }
+        } else {
             Codigo.enable();
-        } 
+        }
+
     }
-    //Conversor de texto a numero (Main)
+
     private long stringToNumber(String texto) {
-        Main converter =new Main();
-        return converter.stringToNumber(texto);
+        long numero = 0;
+        for (int i = 0; i < texto.length(); i++) {
+            char letra = texto.charAt(i);
+            int valor = (int) letra - 'A' + 1;
+            numero = numero * 10 + valor;
+        }
+        return numero;
     }
 
     //Cargar valores del Libro a editar
@@ -506,6 +534,7 @@ public class Formulario extends javax.swing.JFrame {
         Codigo.disable();
         Codigo.setText(numCode(libro.getCodigo()));
     }
+
     //Obtener numero de un codigo
     private String numCode(String code) {
         String codigo = "";
