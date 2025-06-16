@@ -1,5 +1,5 @@
 
-package actividadprofundizacion;
+package src;
 
 public class Nodo {
     Object valor; //Contenido del nodo

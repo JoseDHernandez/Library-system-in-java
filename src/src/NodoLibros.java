@@ -1,4 +1,4 @@
-package actividadprofundizacion;
+package src;
 
 public class NodoLibros {
     private Libro libro; //Objecto libro

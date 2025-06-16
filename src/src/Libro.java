@@ -1,5 +1,5 @@
 
-package actividadprofundizacion;
+package src;
 
 public class Libro {
     //Atributos
